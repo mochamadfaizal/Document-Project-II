@@ -112,7 +112,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" onclick="updateUserDetails()" >Save Changes</button>
+                <button type="button" class="btn btn-primary" onclick="updateUserDetails_pemasok()" >Save Changes</button>
                 <input type="hidden" id="hidden_user_id">
             </div>
         </div>
@@ -137,7 +137,7 @@ function addRecord() {
     var id_toko = $("#id_toko").val();
 
     // Add record
-    $.post("./CrudPemasok/addRecord.php", {
+    $.post("CrudPemasok/addRecord.php", {
         nama: nama,
         alamat: alamat,
         no_telp: no_telp,
@@ -159,7 +159,7 @@ function addRecord() {
 
 // READ records
 function readRecords() {
-    $.get("./CrudPemasok/readRecord.php", {}, function (data, status) {
+    $.get("CrudPemasok/readRecord.php", {}, function (data, status) {
         $(".records_content").html(data);
     });
 }
@@ -168,7 +168,7 @@ function readRecords() {
 function DeleteUser(id) {
     var conf = confirm("Are you sure, do you really want to delete User?");
     if (conf == true) {
-        $.post("./CrudPemasok/deleteUser.php", {
+        $.post("CrudPemasok/deleteUser.php", {
                 id: id
             },
             function (data, status) {
@@ -182,16 +182,16 @@ function DeleteUser(id) {
 function GetUserDetails(id) {
     // Add User ID to the hidden field for furture usage
     $("#hidden_user_id").val(id);
-    $.post("./CrudPemasok/readUserDetails.php", {
+    $.post("CrudPemasok/readUserDetails.php", {
             id: id
         },
         function (data, status) {
             // PARSE json data
             var user = JSON.parse(data);
             // Assing existing values to the modal popup fields
-            $("#update_nama").val(user.nama);
-            $("#update_alamat").val(user.alamat);
-            $("#update_no_telp").val(user.no_telp);
+            $("#update_nama").val(user.nama_pmsk);
+            $("#update_alamat").val(user.alamat_pmsk);
+            $("#update_no_telp").val(user.telp_pmsk);
             $("#update_id_toko").val(user.id_toko);
         }
     );
@@ -210,7 +210,8 @@ function updateUserDetails_pemasok() {
     var id = $("#hidden_user_id").val();
 
     // Update the details by requesting to the server using ajax
-    $.post("./CrudPemasok/updateUserDetails.php", {
+    $.post("CrudPemasok/updateUserDetails.php", {
+            id: id,
             nama: nama,
             alamat: alamat,
             no_telp: no_telp,
@@ -230,6 +231,7 @@ $(document).ready(function () {
     readRecords(); // calling function
 });
 </script>
+
 
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

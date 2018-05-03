@@ -28,9 +28,9 @@
     	{
     		$data .= '<tr align="center">
     					<td>'.$number.'</td>
-						<td>'.$row['nama'].'</td>
-						<td>'.$row['alamat'].'</td>
-						<td>'.$row['no_telp'].'</td>
+						<td>'.$row['nama_pmsk'].'</td>
+						<td>'.$row['alamat_pmsk'].'</td>
+						<td>'.$row['telp_pmsk'].'</td>
 						<td>'.$row['id_toko'].'</td>
 						<td>
 							<button onclick="GetUserDetails('.$row['id_pemasok'].')" class="btn btn-warning">Update</button>

@@ -10,7 +10,7 @@
 		$no_telp = $_POST['no_telp'];
 		$id_toko = $_POST['id_toko'];
 
-		$query = "INSERT INTO data_pemasok(nama, alamat, no_telp, id_toko) VALUES('$nama', '$alamatk','$no_telp', '$id_toko')";
+		$query = "INSERT INTO data_pemasok(id_toko, nama_pmsk, telp_pmsk, alamat_pmsk) VALUES( '$id_toko', '$nama', '$no_telp', '$alamat')";
 		if (!$result = mysql_query($query)) {
 	        exit(mysql_error());
 	    }
