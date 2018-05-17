@@ -1,0 +1,107 @@
+html,body{
+	margin:0 0 0 0;
+	padding:0 0 0 0;
+}
+h1,p{
+	margin:5px 0 5px 0;
+}
+a{
+	color:#6388b9;
+	text-decoration:none;
+}
+/* CSS HEADER */
+#header{
+	height:85px;
+	display:block;
+	background-image:url(images/header.png);
+}
+#logo{
+	float:left;
+	width:200px;
+	padding:20px 0 0 10px;
+}
+#login{
+	float:right;
+	width:370px;
+	padding:10px 10px 0 0;
+}
+#login table{
+	font:normal 12px Tahoma,Verdana;
+	color:#ffffff;
+}
+/* CSS CONTENT */
+#content{
+	background-image:url(images/content.png);
+	min-height:500px;
+}
+#content #wrapper{
+	width:1000px;
+	padding:30px 0 0 0;
+	margin-left:auto;
+	margin-right:auto;
+	color:#666666;
+}
+#content #wrapper #mobile{
+	width:555px;
+	float:left;
+}
+
+ul{
+	margin:0 0 0 0;
+	padding:0 0 0 20px;
+}
+input.button_mobile{
+	width:142px;
+	height:40px;
+	border:none;
+	background-color:transparent;
+	background-image:url(images/button-mobile.png);
+	background-position:center center;
+	cursor:pointer;
+}
+
+#content #wrapper #register{
+	width:400px;
+	float:right;
+}
+#content #wrapper #register{
+	font:normal 12px Tahoma,Verdana;
+	border-bottom:silver 1px solid;
+}
+input.login{
+	width:200px;
+	height:55px;
+	border:none;
+	background-color:transparent;
+	background-image:url(images/button.png);
+	background-position:center center;
+	cursor:pointer;
+}
+#clear{
+	display:block;height:1px;clear:both;
+}
+
+/* CSS FOOTER */
+#footer{
+	font:normal 12px Tahoma,Verdana;
+	display:block;
+	height:150px;
+	background-color:#ffffff;
+}
+#footer #link{
+	margin:0 30px 0 30px;
+	border-bottom:silver 1px solid;
+}
+#footer #link2{
+	margin:0 30px 0 30px;
+}
+#footer #link2 table tr td{
+	font:normal 12px Tahoma,Verdana;
+}
+#footer #link a, #footer #link2 a{
+	line-height:30px;
+	margin-right:10px;
+}
+#footer #copy{
+	margin:0 30px 0 30px;
+}
