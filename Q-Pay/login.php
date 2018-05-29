@@ -4,31 +4,59 @@ require_once("config.php");
 
 if(isset($_POST['login'])){
 
+
+
+
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
-    $sql = "SELECT * FROM users WHERE username=:username OR email=:email";
+    $sql = "SELECT * FROM user WHERE username=:username";
     $stmt = $db->prepare($sql);
     
     // bind parameter ke query
     $params = array(
         ":username" => $username,
-        ":email" => $username
     );
 
     $stmt->execute($params);
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    $hash = $user["password"];
+
     // jika user terdaftar
     if($user){
+
+
         // verifikasi password
-        if(password_verify($password, $user["password"])){
+        if(password_verify($password, $hash)){
             // buat Session
             session_start();
             $_SESSION["user"] = $user;
+
+            if($user["level"]=="admin"){
+              header("Location: Admin/index.php");
+
+            }else if($user["level"]=="pemilik toko"){
             // login sukses, alihkan ke halaman timeline
+    $sql2 = "SELECT * FROM data_toko WHERE id_user=:id_user";
+    $stmt2 = $db->prepare($sql2);
+    
+    // bind parameter ke query
+    $params2 = array(
+        ":id_user" => $user["id_user"],
+    );
+
+    $stmt2->execute($params2);
+
+    $user2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+
+            $_SESSION["id_toko"] = $user2["id_toko"];
+            
             header("Location: timeline.php");
+          }else{
+            echo "Gagal Login";
+          }
         }
     }
 }
@@ -80,6 +108,9 @@ if(isset($_POST['login'])){
 
         <div class="text-center">
           <a class="d-block small mt-3" href="register.php">Register an Account</a>
+        </div>
+        <div class="text-left">
+          <a class="d-block small mt-2" href="register.php">Forgot Password</a>
         </div>
       </div>
     </div>

@@ -2,5 +2,5 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$database = "db_qpay";
+$database = "q_pay";
 ?>

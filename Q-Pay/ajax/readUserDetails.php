@@ -9,7 +9,8 @@ if(isset($_POST['id']) && isset($_POST['id']) != "")
     $user_id = $_POST['id'];
 
     // Get User Details
-    $query = "SELECT * FROM data_karyawan WHERE id = '$user_id'";
+    $query = "SELECT * FROM v_karyawan WHERE id_karyawan = '$user_id'";
+    
     if (!$result = mysql_query($query)) {
         exit(mysql_error());
     }

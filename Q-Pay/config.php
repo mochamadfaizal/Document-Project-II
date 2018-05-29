@@ -3,7 +3,7 @@
 $db_host = "localhost";
 $db_user = "root";
 $db_pass = "";
-$db_name = "db_qpay";
+$db_name = "q_pay";
 
 try {    
     //create PDO connection 

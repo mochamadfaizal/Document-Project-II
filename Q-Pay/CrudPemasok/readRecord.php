@@ -1,6 +1,7 @@
 <?php
 	// include Database connection file 
 	include("db_connection.php");
+	include '../auth.php';
 
 	// Design initial table header 
 	$data = '<table class="table table-bordered table-striped">
@@ -9,11 +10,13 @@
 							<th>Nama</th>
 							<th>Alamat</th>
 							<th>Telpon</th>
-							<th>Toko</th>
 							<th colspan="2">Tindakan</th>
 						</tr>';
 
-	$query = "SELECT * FROM data_pemasok";
+
+	$id_toko = $_SESSION['id_toko'];
+
+	$query = "SELECT * FROM data_pemasok WHERE id_toko = '$id_toko'";
 
 	if (!$result = mysql_query($query)) {
         exit(mysql_error());
@@ -28,10 +31,9 @@
     	{
     		$data .= '<tr align="center">
     					<td>'.$number.'</td>
-						<td>'.$row['nama_pmsk'].'</td>
-						<td>'.$row['alamat_pmsk'].'</td>
-						<td>'.$row['telp_pmsk'].'</td>
-						<td>'.$row['id_toko'].'</td>
+						<td>'.$row['nama'].'</td>
+						<td>'.$row['alamat'].'</td>
+						<td>'.$row['no_telp'].'</td>
 						<td>
 							<button onclick="GetUserDetails('.$row['id_pemasok'].')" class="btn btn-warning">Update</button>
 						</td>

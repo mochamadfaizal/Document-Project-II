@@ -1,4 +1,4 @@
-<?//php require_once("auth.php"); ?>
+<?php require_once("auth.php"); ?>
 
 <!DOCTYPE html>
 <html >
@@ -52,7 +52,10 @@
               <a href="?page=pemasok">Data Pemasok</a>
             </li>
             <li>
-              <a href="#">Data Perusahaan</a>
+              <a href="?page=barang">Data Perusahaan</a>
+            </li>
+            <li>
+              <a href="?page=barang">Data Barang</a>
             </li>
           </ul>
         </li>
@@ -230,6 +233,9 @@
                   break;
                   case 'karyawan':
                     include "halaman/read_karyawan2.php";
+                  break;
+                  case 'barang':
+                    include "halaman/read_barang.php";
                   break;
                   case 'pengguna':
                     include "halaman/pengguna.php";

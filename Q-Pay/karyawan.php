@@ -16,11 +16,11 @@ if(isset($_POST['daftar'])){
 	$host = 'localhost';
 	$user = 'root';
 	$pass = '';
-	$nmdb = 'db_qpay';
+	$nmdb = 'q_pay';
 
 	$konek = mysqli_connect($host, $user, $pass, $nmdb);
 	// buat query
-	$sql = "INSERT INTO data_karyawan (id_krywn, nama_krywn, alamat_krywn, email_krywn, telp_krywn, id_toko) VALUES ('$id_krywn', '$nama_krywn', '$alamat_krywn', '$email_krywn' , '$telp_krywn', '$id_toko')";
+	$sql = "INSERT INTO data_karyawan (id_karayawan, id_user, id_toko, nama_krywn, alamat_krywn, email_krywn, telp_krywn, id_toko) VALUES ('$id_krywn', '$nama_krywn', '$alamat_krywn', '$email_krywn' , '$telp_krywn', '$id_toko')";
 	$query = mysqli_query($konek, $sql);
 	
 	// apakah query simpan berhasil?

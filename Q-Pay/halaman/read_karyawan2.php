@@ -70,9 +70,19 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="id_toko">Toko</label>
-                    <input type="text" id="id_toko" placeholder="ID Toko anda" class="form-control"/>
+                    <label class="control-label" for="username">Username</label>
+                    <input type="text" id="username" placeholder="Username untuk karyawan" class="form-control"/>
                 </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="password">Password</label>
+                    <input type="password" id="password" placeholder="Password untuk karyawan" class="form-control"/>
+                </div>
+
+                <div class="form-group">
+                    <input style="display: none;" type="text" id="id_toko" class="form-control" value="<?php echo"$_SESSION[id_toko]"; ?>" />
+                </div>
+
             </form>
 
             </div>
@@ -115,15 +125,25 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="id_toko">Toko</label>
-                    <input type="text" id="update_id_toko" placeholder="ID Toko anda" class="form-control"/>
-                </div>  
+                    <label class="control-label" for="username">Username</label>
+                    <input type="text" id="update_username" placeholder="Username untuk karyawan" class="form-control"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="password">Password</label>
+                    <input type="password" id="update_password" placeholder="Password untuk karyawan" class="form-control"/>
+                </div>
+
+                <div class="form-group">
+                    <input style="display: none;" type="text" id="update_id_toko" class="form-control" value="<?php echo"$_SESSION[id_toko]"; ?>" />
+                </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-primary" onclick="UpdateUserDetails()" >Save Changes</button>
                 <input type="hidden" id="hidden_user_id">
+                <input type="hidden" id="hidden_user_user">
             </div>
         </div>
     </div>
@@ -145,6 +165,8 @@ function addRecord() {
     var alamat_krywn = $("#alamat_krywn").val();
     var email_krywn = $("#email_krywn").val();
     var telp_krywn = $("#telp_krywn").val();
+    var username = $("#username").val();
+    var password = $("#password").val();
     var id_toko = $("#id_toko").val();
 
     // Add record
@@ -153,7 +175,10 @@ function addRecord() {
         alamat_krywn: alamat_krywn,
         email_krywn: email_krywn,
         telp_krywn: telp_krywn,
+        username: username,
+        password: password,
         id_toko: id_toko
+        
     }, function (data, status) {
         // close the popup
         $("#add_new_record_modal").modal("hide");
@@ -166,7 +191,8 @@ function addRecord() {
         $("#alamat_krywn").val("");
         $("#email_krywn").val("");
         $("#telp_krywn").val("");
-        $("#id_toko").val("");
+        $("#username").val("");
+        $("#password").val("");
     });
 }
 
@@ -178,11 +204,12 @@ function readRecords() {
 }
 
 
-function DeleteUser(id) {
+function DeleteUser(id_karyawan, id_user) {
     var conf = confirm("Are you sure, do you really want to delete User?");
     if (conf == true) {
         $.post("./ajax/deleteUser.php", {
-                id: id
+                id_karyawan: id_karyawan,
+                id_user: id_user
             },
             function (data, status) {
                 // reload Users by using readRecords();
@@ -192,20 +219,24 @@ function DeleteUser(id) {
     }
 }
 
-function GetUserDetails(id) {
+function GetUserDetails(id, user) {
     // Add User ID to the hidden field for furture usage
     $("#hidden_user_id").val(id);
+    $("#hidden_user_user").val(user);
     $.post("./ajax/readUserDetails.php", {
-            id: id
+            id: id,
+            user: user
         },
         function (data, status) {
             // PARSE json data
             var user = JSON.parse(data);
             // Assing existing values to the modal popup fields
-            $("#update_nama_krywn").val(user.nama_krywn);
-            $("#update_alamat_krywn").val(user.alamat_krywn);
-            $("#update_email_krywn").val(user.email_krywn);
-            $("#update_telp_krywn").val(user.telp_krywn);
+            $("#update_nama_krywn").val(user.nama);
+            $("#update_alamat_krywn").val(user.alamat);
+            $("#update_email_krywn").val(user.email);
+            $("#update_telp_krywn").val(user.no_hp);
+            $("#update_username").val(user.username);
+            $("#update_password").val(user.password);
             $("#update_id_toko").val(user.id_toko);
         }
     );
@@ -219,18 +250,24 @@ function UpdateUserDetails() {
     var alamat_krywn = $("#update_alamat_krywn").val();
     var email_krywn = $("#update_email_krywn").val();
     var telp_krywn = $("#update_telp_krywn").val();
-    var id_toko = $("update_id_toko").val();
+    var username = $("#update_username").val();
+    var password = $("#update_password").val();
+    var id_toko = $("#update_id_toko").val();
 
     // get hidden field value
     var id = $("#hidden_user_id").val();
+    var user = $("#hidden_user_user").val();
 
     // Update the details by requesting to the server using ajax
     $.post("./ajax/updateUserDetails.php", {
             id: id,
+            user: user,
             nama_krywn: nama_krywn,
             alamat_krywn: alamat_krywn,
             email_krywn: email_krywn,
             telp_krywn: telp_krywn,
+            username: username,
+            password: password,
             id_toko: id_toko
         },
         function (data, status) {

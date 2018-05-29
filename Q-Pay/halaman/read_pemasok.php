@@ -65,8 +65,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="id_toko">Toko</label>
-                    <input type="text" id="id_toko" placeholder="ID Toko" class="form-control"/>
+                    <input style="display: none;" type="text" id="id_toko" placeholder="ID Toko" class="form-control" value="<?php echo"$_SESSION[id_toko]"; ?>" />
                 </div>
             </form>
 
@@ -103,11 +102,6 @@
                     <label for="no_telp">No Telp</label>
                     <input type="text" id="update_no_telp" placeholder="Masukan Nomor Telp Pemasok" class="form-control"/>
                 </div>
-
-                <div class="form-group">
-                    <label for="id_toko">Toko</label>
-                    <input type="text" id="update_id_toko" placeholder="ID Toko" class="form-control"/>
-                </div>  
 
             </div>
             <div class="modal-footer">
@@ -190,10 +184,9 @@ function GetUserDetails(id) {
             // PARSE json data
             var user = JSON.parse(data);
             // Assing existing values to the modal popup fields
-            $("#update_nama").val(user.nama_pmsk);
-            $("#update_alamat").val(user.alamat_pmsk);
-            $("#update_no_telp").val(user.telp_pmsk);
-            $("#update_id_toko").val(user.id_toko);
+            $("#update_nama").val(user.nama);
+            $("#update_alamat").val(user.alamat);
+            $("#update_no_telp").val(user.no_telp);
         }
     );
     // Open modal popup
@@ -205,7 +198,6 @@ function updateUserDetails_pemasok() {
     var nama = $("#update_nama").val();
     var alamat = $("#update_alamat").val();
     var no_telp = $("#update_no_telp").val();
-    var id_toko = $("#update_id_toko").val();
 
     // get hidden field value
     var id = $("#hidden_user_id").val();
@@ -216,7 +208,6 @@ function updateUserDetails_pemasok() {
             nama: nama,
             alamat: alamat,
             no_telp: no_telp,
-            id_toko: id_toko
         },
         function (data, status) {
             // hide modal popup

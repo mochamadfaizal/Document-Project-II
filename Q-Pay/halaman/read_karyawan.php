@@ -28,7 +28,7 @@
             $servername = "localhost";
             $username = "root";
             $password = "";
-            $dbname = "db_qpay";
+            $dbname = "q_pay";
 
             // Membuat Koneksi
             $koneksi = new mysqli($servername, $username, $password, $dbname);
@@ -45,11 +45,11 @@
             if ($hasil->num_rows > 0) {
                 foreach ($hasil as $row) { ?>
                   <tr>
-                  <td><?php echo $row['id_krywn']; ?></td>
-                  <td><?php echo $row['nama_krywn']; ?></td>
-                  <td><?php echo $row['alamat_krywn']; ?></td>
-                  <td><?php echo $row['email_krywn']; ?></td>
-                  <td><?php echo $row['telp_krywn']; ?></td>
+                  <td><?php echo $row['id_karyawan']; ?></td>
+                  <td><?php echo $row['nama_karyawan']; ?></td>
+                  <td><?php echo $row['alamat_karyawan']; ?></td>
+                  <td><?php echo $row['email_karyawan']; ?></td>
+                  <td><?php echo $row['telp_karyawan']; ?></td>
                   <td><?php echo $row['id_toko']; ?></td>
                   <td>
                   <a href="#" class="btn btn-info">Edit</a>
