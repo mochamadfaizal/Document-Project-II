@@ -167,7 +167,7 @@ if(@$_GET['act'] == '') {
         			 <script type="text/javascript">
 
         			 $(document).on("click", "#edit_mbr", function() {
-                        var id_member = $(this).data('id');
+                        var id_member = $(this).data('id_member');
                         var nama = $(this).data('nama');
                         var email = $(this).data('email');
                         var username = $(this).data('username');

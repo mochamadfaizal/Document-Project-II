@@ -9,7 +9,7 @@ class Member {
 
 	public function tampil($id = null) {
 		$db = $this->mysqli->conn;
-		$sql = "SELECT * FROM data_member";
+		$sql = "SELECT * FROM v_member";
 		if ($id != null) {
 			$sql .= " WHERE id_member = $id";
 		}
