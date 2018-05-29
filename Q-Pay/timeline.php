@@ -10,6 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Halaman Admin Q-Pay</title>
+  <link rel="icon" type="image/png" href="images/icon.ico">
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -105,7 +106,7 @@
         </li>
         -->
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="login.php">
+          <a class="nav-link" href="index.php">
             <i class="fa fa-fw fa-sign-out"></i>
             <span class="nav-link-text">Keluar</span>
           </a>
@@ -286,7 +287,7 @@
           <div class="modal-body">Pilih "Keluar" jika anda siap untuk mengahiri sesi.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-            <a class="btn btn-primary" href="logout.php">Keluar</a>
+            <a class="btn btn-primary" href="index.php">Keluar</a>
           </div>
         </div>
       </div>

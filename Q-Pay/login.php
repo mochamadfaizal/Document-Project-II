@@ -72,6 +72,7 @@ if(isset($_POST['login'])){
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Q-Payment Admin</title>
+  <link rel="icon" type="image/png" href="images/icon.ico">
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
